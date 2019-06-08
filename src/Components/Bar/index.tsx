@@ -1,7 +1,6 @@
 import React from "react";
 import classnames from "classnames";
 import { RouteComponentProps } from "react-router";
-
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -9,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import Create from "@material-ui/icons/Create";
 import Settings from "@material-ui/icons/Settings";
-import styles from "../../Styles/Bar";
+import styles from "./style";
 
 interface Props extends WithStyles {}
 

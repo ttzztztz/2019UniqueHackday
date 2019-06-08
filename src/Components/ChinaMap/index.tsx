@@ -1,8 +1,9 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
+import styles from "./style";
+
 import Sinomap from "sinomap";
 import china from "sinomap/resources/china.json";
-import styles from "../../Styles/ChinaMap";
 import ChoroplethLayer from "sinomap/dist/layers/choropleth";
 
 interface Props extends WithStyles {}
