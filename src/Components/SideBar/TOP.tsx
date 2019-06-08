@@ -19,10 +19,8 @@ class TopDetail extends React.PureComponent<Props> {
         const rawData = type === "change" ? this.props.data.change : this.props.data.hot;
         const data =
             city === "全国"
-                ? rawData.sort(($1, $2) => Number.parseFloat($2.hot) - Number.parseFloat($1.hot))
-                : rawData
-                      .filter(item => item.region === city)
-                      .sort(($1, $2) => Number.parseFloat($2.hot) - Number.parseFloat($1.hot));
+                ? rawData.sort(($1, $2) => $2.hot - $1.hot)
+                : rawData.filter(item => item.region === city).sort(($1, $2) => $2.hot - $1.hot);
 
         return (
             <>

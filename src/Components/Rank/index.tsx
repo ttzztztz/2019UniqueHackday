@@ -12,7 +12,7 @@ import TableRow from "@material-ui/core/TableRow";
 import TypeLabel from "../TypeLabel";
 
 interface Props extends WithStyles {
-    rank: Array<any>;
+    rank: Array<TYPINGS.IRank>;
     city: string;
 }
 
@@ -21,10 +21,8 @@ class Rank extends React.PureComponent<Props> {
         const { classes, rank, city } = this.props;
         const data =
             city === "全国"
-                ? rank.sort(($1, $2) => Number.parseFloat($2.hot) - Number.parseFloat($1.hot))
-                : rank
-                      .filter(item => item.region === city)
-                      .sort(($1, $2) => Number.parseFloat($2.hot) - Number.parseFloat($1.hot));
+                ? rank.sort(($1, $2) => $2.hot - $1.hot)
+                : rank.filter(item => item.region === city).sort(($1, $2) => $2.hot - $1.hot);
 
         return (
             <Table className={classes.table}>
