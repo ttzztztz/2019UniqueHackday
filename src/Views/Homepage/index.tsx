@@ -3,7 +3,7 @@ import styles from "./style";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
-import ChinaMap from "../../Components/ChinaMap";
+import ChinaMap from "../../Containers/ChinaMap";
 import SearchBox from "../../Components/Search";
 import Sidebar from "../../Containers/SideBar";
 

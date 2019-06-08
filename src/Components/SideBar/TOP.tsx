@@ -7,38 +7,18 @@ import NewsItem from "./newsItem";
 interface Props extends WithStyles {
     city: string;
     type: "change" | "hot";
+    data: {
+        change: Array<any>;
+        hot: Array<any>;
+    };
 }
 
 class TopDetail extends React.PureComponent<Props> {
     render() {
-        const data = [
-            {
-                rank: 1,
-                title: "洪志远学长",
-                region: "湖北",
-                hot: 1.22,
-                area: "计算机科学",
-                href: "https://www.hzytql.top"
-            },
-            {
-                rank: 2,
-                title: "洪志远学长",
-                region: "湖北",
-                hot: 2.22,
-                area: "计算机科学",
-                href: "https://www.hzytql.top"
-            },
-            {
-                rank: 3,
-                title: "洪志远学长",
-                region: "湖北",
-                hot: 3.22,
-                area: "计算机科学",
-                href: "https://www.hzytql.top"
-            }
-        ];
+        const { type, city } = this.props;
+        const rawData = type === "change" ? this.props.data.change : this.props.data.hot;
+        const data = city === "全国" ? rawData : rawData.filter(item => item.region === city);
 
-        const { classes } = this.props;
         return (
             <>
                 {data.map((item, key) => (
