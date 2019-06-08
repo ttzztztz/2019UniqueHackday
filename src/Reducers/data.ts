@@ -7,7 +7,7 @@ export interface DataStore {
     rank: Array<any>;
     statics: {
         basic: Array<any>;
-        percent: Array<any>;
+        percent: Array<{ name: string; data: Array<number> }>;
     };
 }
 
@@ -100,8 +100,30 @@ const initState: DataStore = {
         }
     ],
     statics: {
-        basic: [],
-        percent: []
+        basic: [
+            {
+                name: "全国",
+                events: 12,
+                up: 30,
+                down: 7
+            },
+            {
+                name: "上海",
+                events: 9,
+                up: 2,
+                down: 3
+            }
+        ],
+        percent: [
+            {
+                name: "江苏",
+                data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+            },
+            {
+                name: "河北",
+                data: [99, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+            }
+        ]
     }
 };
 

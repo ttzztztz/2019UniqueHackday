@@ -16,20 +16,28 @@ interface Props extends WithStyles {
 
 class DetailView extends React.Component<Props> {
     render() {
-        const { classes } = this.props;
+        const { classes, city } = this.props;
+        const [obj] = this.props.statics.basic.filter(item => item.name === city);
+        const basicStatics = obj
+            ? obj
+            : {
+                  events: 0,
+                  up: 0,
+                  down: 0
+              };
 
         return (
-            <div className={classes["item-paper"]}>
+            <div className={classes["item-paper"]} id="data-analysis">
                 <h3 className={classes["item-data-title"]}>基础数据</h3>
                 <Grid container>
                     <Grid item xs={4}>
-                        <StaticDisplay data="20件" title="事件数" color="black" />
+                        <StaticDisplay data={basicStatics.events + "件"} title="事件数" color="black" />
                     </Grid>
                     <Grid item xs={4}>
-                        <StaticDisplay data="25件" title="热度上升" color="#c43c2c" />
+                        <StaticDisplay data={basicStatics.up + "件"} title="热度上升" color="#c43c2c" />
                     </Grid>
                     <Grid item xs={4}>
-                        <StaticDisplay data="12件" title="热度下降" color="#45B485" />
+                        <StaticDisplay data={basicStatics.down + "件"} title="热度下降" color="#45B485" />
                     </Grid>
                 </Grid>
                 <h3 className={classes["item-data-title"]}>类型占比</h3>
@@ -37,22 +45,70 @@ class DetailView extends React.Component<Props> {
             </div>
         );
     }
+
+    componentDidUpdate() {
+        this.renderAnalysis();
+    }
     componentDidMount() {
-        const ctx = document.getElementById("charts");
-        new Chart(ctx, {
+        this.renderAnalysis();
+    }
+
+    renderAnalysis = () => {
+        const { city } = this.props;
+        const [obj] = this.props.statics.percent.filter(item => item.name === city);
+        const basicPercent = obj ? (obj.data as Array<number>) : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+
+        const parent = document.getElementById("data-analysis");
+        parent.removeChild(document.getElementById("charts"));
+        const newElem = document.createElement("canvas");
+        newElem.id = "charts";
+        parent.appendChild(newElem);
+
+        const chartOptions = {
             type: "pie",
             data: {
-                labels: ["经济", "民生"],
+                labels: [
+                    "民生",
+                    "文娱",
+                    "评论",
+                    "法治",
+                    "政务",
+                    "经济",
+                    "身边事",
+                    "教育",
+                    "体育",
+                    "医疗",
+                    "交通",
+                    "商业",
+                    "突发"
+                ],
                 datasets: [
                     {
-                        label: "# of Votes",
-                        data: [12, 19],
-                        backgroundColor: ["#02a9ed", "#0a54cf"]
+                        data: basicPercent,
+                        backgroundColor: [
+                            "#02a9ed",
+                            "#0a54cf",
+                            "#02a9ed",
+                            "#0a54cf",
+                            "#02a9ed",
+                            "#0a54cf",
+                            "#02a9ed",
+                            "#0a54cf",
+                            "#02a9ed",
+                            "#0a54cf",
+                            "#02a9ed",
+                            "#0a54cf",
+                            "#02a9ed"
+                        ]
                     }
-                ]
+                ],
+                legend: {
+                    display: false
+                }
             }
-        });
-    }
+        };
+        new Chart(newElem, chartOptions);
+    };
 }
 
 export default withStyles(style)(DetailView);

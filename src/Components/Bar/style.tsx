@@ -10,6 +10,10 @@ const styles = createStyles({
     "head-2": {
         flexGrow: 1,
         textAlign: "right"
+    },
+    "bar-platte": {
+        background: "white",
+        color: "black"
     }
 });
 
