@@ -4,6 +4,7 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import Bar from "./Containers/Bar";
 import Homepage from "./Containers/Homepage";
+import SelfKill from "./Views/SelfKill";
 import withRoot from "./Styles/WithRoot";
 import Footer from "./Components/Footer";
 import Store from "./Reducers/store";
@@ -17,6 +18,8 @@ const App: React.FC = () => {
                 <Switch>
                     <Redirect exact from="/" to="/homepage" />
                     <Route path="/homepage" component={Homepage} />
+                    <Route path="/selfkill" component={SelfKill} />
+                    <Route path="/lie" component={SelfKill} />
                 </Switch>
                 <Footer />
             </BrowserRouter>
