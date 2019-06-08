@@ -1,5 +1,9 @@
 import { combineReducers } from "redux";
+import { CityStore, cityReducer } from "./city";
 
-export interface StoreState {}
-
-export const reducers = combineReducers({});
+export interface StoreState {
+    city: CityStore;
+}
+export const reducers = combineReducers({
+    city: cityReducer
+});
