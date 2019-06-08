@@ -13,7 +13,8 @@ const styles = createStyles({
         color: "white",
         fontSize: "16px",
         padding: "12px 0",
-        marginTop: "12px"
+        margin: "12px auto",
+        width: "75%"
     }
 });
 

@@ -6,7 +6,7 @@ export interface StoreState {
     city: CityStore;
     data: DataStore;
 }
-export const reducers = combineReducers({
+export const reducer = combineReducers({
     city: cityReducer,
     data: dataReducer
 });

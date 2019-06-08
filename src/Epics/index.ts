@@ -8,7 +8,7 @@ import {
 import { Action, AnyAction } from "redux";
 import { Observable } from "rxjs";
 import { StoreState } from "../Reducers";
-import userEpic from "../Epics/User";
+import requestEpic from "./Request";
 
 const dependencies = { localStorage };
 export type Dependencies = typeof dependencies;
@@ -23,4 +23,4 @@ export const epicMiddleware: EpicMiddleware<Action, Action, StoreState> = create
     dependencies
 });
 
-export const epics = combineEpics(...userEpic) as any;
+export const epics = combineEpics(...requestEpic) as any;

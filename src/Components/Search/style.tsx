@@ -7,11 +7,7 @@ const styles = createStyles({
         alignItems: "center",
         width: "60%",
         margin: "0 auto",
-        borderRadius: "24px",
-        "&$hover": {
-            background: "#fd504d",
-            color: "white"
-        }
+        borderRadius: "24px"
     },
     input: {
         marginLeft: 8,
@@ -20,7 +16,11 @@ const styles = createStyles({
     iconButton: {
         padding: 10,
         background: "#fd504d",
-        color: "white"
+        color: "white",
+        "&:hover": {
+            background: "#fd504d99",
+            color: "white"
+        }
     },
     "search-container": {
         margin: "24px auto 60px auto"

@@ -8,6 +8,7 @@ import { BrowserRouter } from "react-router-dom";
 import Bar from "./Containers/Bar";
 import Homepage from "./Views/Homepage";
 import withRoot from "./Styles/WithRoot";
+import Footer from "./Components/Footer";
 import "./App.css";
 
 const middleware = [epicMiddleware];
@@ -25,6 +26,7 @@ const App: React.FC = () => {
                     <Redirect exact from="/" to="/homepage" />
                     <Route path="/homepage" component={Homepage} />
                 </Switch>
+                <Footer />
             </BrowserRouter>
         </Provider>
     );
