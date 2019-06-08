@@ -1,12 +1,42 @@
 import * as actions from "../Actions/data";
 
 export interface DataStore {
-    cityInfo: Array<any>;
-    top5Hot: Array<any>;
-    top5Change: Array<any>;
-    rank: Array<any>;
+    cityInfo: Array<{
+        name: string;
+        value: number;
+        description: string;
+    }>;
+    top5Hot: Array<{
+        rank: number;
+        title: string;
+        region: string;
+        hot: number;
+        area: string;
+        href: string;
+    }>;
+    top5Change: Array<{
+        rank: number;
+        title: string;
+        region: string;
+        hot: number;
+        area: string;
+        href: string;
+    }>;
+    rank: Array<{
+        rank: number;
+        title: string;
+        region: string;
+        hot: number;
+        area: string;
+        href: string;
+    }>;
     statics: {
-        basic: Array<any>;
+        basic: Array<{
+            name: string;
+            events: number;
+            up: number;
+            down: number;
+        }>;
         percent: Array<{ name: string; data: Array<number> }>;
     };
 }

@@ -7,7 +7,7 @@ const styles = createStyles({
     "item-paper": {
         height: "72px",
         padding: "12px",
-        margin: "12px auto"
+        margin: "8px auto"
     },
     "item-hot": {
         color: "red"

@@ -37,7 +37,7 @@ class Bar extends React.PureComponent<Props & RouteComponentProps> {
             <AppBar position="static" className={classes["bar-platte"]}>
                 <Toolbar>
                     <Typography variant="h6" color="inherit" className={classnames(classes["head"], classes["head-1"])}>
-                        <img src={Logo} />
+                        <img src={Logo} style={{ width: "48px", height: "48px" }} />
                     </Typography>
                     <Typography variant="h6" color="inherit" className={classnames(classes["head"], classes["head-2"])}>
                         <Button onClick={this.handleClickHotSpot}>热点监测</Button>
