@@ -9,7 +9,9 @@ import SearchBox from "../../Components/Search";
 import HotEvents from "./hotEvent";
 import ImportantEvent from "../../Containers/ImportantEvent";
 
-interface Props extends WithStyles {}
+interface Props extends WithStyles {
+    beginDispatch: () => void;
+}
 
 class HomePage extends React.PureComponent<Props> {
     state = {
@@ -41,6 +43,9 @@ class HomePage extends React.PureComponent<Props> {
                 {value === 1 && <ImportantEvent />}
             </div>
         );
+    }
+    componentDidMount() {
+        this.props.beginDispatch();
     }
 }
 

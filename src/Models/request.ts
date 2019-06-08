@@ -1,4 +1,13 @@
 export default async (url: string) => {
-    const data = await fetch(url);
-    return await data.json();
+    try {
+        const data = await fetch(url, {
+            method: "GET"
+        });
+        return await data.json();
+    } catch (e) {
+        return {
+            code: "err",
+            e
+        };
+    }
 };

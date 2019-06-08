@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import Bar from "./Containers/Bar";
-import Homepage from "./Views/Homepage";
+import Homepage from "./Containers/Homepage";
 import withRoot from "./Styles/WithRoot";
 import Footer from "./Components/Footer";
 import Store from "./Reducers/store";
