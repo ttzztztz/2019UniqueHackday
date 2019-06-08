@@ -17,10 +17,11 @@ const changeTop5Hot: Epic = action$ =>
             return from(request(`${DOMAIN}provinces/top`)).pipe(
                 mergeMap(res => {
                     const resArr = (res.data as any[]).reduce((p, v) => {
-                        p = [...p, ...v.list];
+                        if (v.list) {
+                            p = [...p, ...v.list];
+                        }
                         return p;
                     }, []);
-
                     const dataRaw: Array<TYPINGS.ITop5Hot> = (resArr as any[]).map(item => ({
                         rank: item.rank,
                         title: item.incidentTitle,
@@ -48,7 +49,9 @@ const changeTop5Change: Epic = action$ =>
             return from(request(`${DOMAIN}provinces/change`)).pipe(
                 mergeMap(res => {
                     const resArr = (res.data as any[]).reduce((p, v) => {
-                        p = [...p, ...v.list];
+                        if (v.list) {
+                            p = [...p, ...v.list];
+                        }
                         return p;
                     }, []);
 
@@ -78,18 +81,16 @@ const cityInfoChange: Epic = action$ =>
         mergeMap(() => {
             return from(request(`${DOMAIN}china`)).pipe(
                 mergeMap(res => {
-                    const resArr = (res.data as any[]).reduce((p, v) => {
-                        p = [...p, ...v.list];
+                    const resArr = (res.data.list as any[]).reduce((p, v) => {
+                        p = [...p, v];
                         return p;
                     }, []);
 
-                    const dataRaw: Array<TYPINGS.ICityInfo> = (resArr as any[]).map(item => ({
+                    const data: Array<TYPINGS.ICityInfo> = (resArr as any[]).map(item => ({
                         name: item.province,
-                        value: item.rank,
+                        value: 1,
                         description: item.incidentTitle
                     }));
-
-                    const data: any = dataRaw.length > 5 ? dataRaw.slice(0, 5) : dataRaw;
 
                     return of({
                         type: ACTIONTYPE.CHANGE_CITY_DATA,
@@ -100,21 +101,21 @@ const cityInfoChange: Epic = action$ =>
         })
     );
 
-const rankChange: Epic = action$ =>
-    action$.pipe(
-        ofType(TYPE.REQUEST_CHANGE_RANK),
-        mergeMap(() => {
-            return from(request(`${DOMAIN}rank`)).pipe(
-                mergeMap(res => {
-                    const data = res;
-                    return of({
-                        type: ACTIONTYPE.CHANGE_RANK,
-                        data: data
-                    } as ACTIONTYPE.IChangeRank);
-                })
-            );
-        })
-    );
+// const rankChange: Epic = action$ =>
+//     action$.pipe(
+//         ofType(TYPE.REQUEST_CHANGE_RANK),
+//         mergeMap(() => {
+//             return from(request(`${DOMAIN}rank`)).pipe(
+//                 mergeMap(res => {
+//                     const data = res;
+//                     return of({
+//                         type: ACTIONTYPE.CHANGE_RANK,
+//                         data: data
+//                     } as ACTIONTYPE.IChangeRank);
+//                 })
+//             );
+//         })
+//     );
 
 const beginEpics: Epic = action$ =>
     action$.pipe(
@@ -137,4 +138,4 @@ const beginEpics: Epic = action$ =>
         )
     );
 
-export default [beginEpics, changeTop5Hot, changeTop5Change, cityInfoChange, rankChange];
+export default [beginEpics, changeTop5Hot, changeTop5Change, cityInfoChange];
