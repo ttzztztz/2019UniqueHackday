@@ -1,11 +1,14 @@
 import React from "react";
-import "./App.css";
-
 import { Provider } from "react-redux";
 import { applyMiddleware, createStore } from "redux";
 import { reducers } from "./Reducers";
 import { epicMiddleware, epics } from "./Epics";
+import { Route, Redirect, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
+import Bar from "./Containers/Bar";
+import Homepage from "./Views/Homepage";
+import withRoot from "./Styles/WithRoot";
+import "./App.css";
 
 const middleware = [epicMiddleware];
 
@@ -17,10 +20,14 @@ const App: React.FC = () => {
     return (
         <Provider store={store}>
             <BrowserRouter>
-                <div className="App" />
+                <Bar />
+                <Switch>
+                    <Redirect exact from="/" to="/homepage" />
+                    <Route path="/homepage" component={Homepage} />
+                </Switch>
             </BrowserRouter>
         </Provider>
     );
 };
 
-export default App;
+export default withRoot(App);

@@ -1586,6 +1586,11 @@
   dependencies:
     "@babel/types" "^7.3.0"
 
+"@types/classnames@^2.2.8":
+  version "2.2.8"
+  resolved "https://registry.yarnpkg.com/@types/classnames/-/classnames-2.2.8.tgz#17139e1e1104203572caa4368f6796f6225b70b4"
+  integrity sha512-3UrLzPnz8u+MMXuJTF++389IfLSQUbl5F3ry9WCxva0BKG5H/oo5NuPRXk+HrpPU1+5pVHSWhnVWRzIaFQ7QuQ==
+
 "@types/history@*":
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/@types/history/-/history-4.7.2.tgz#0e670ea254d559241b6eeb3894f8754991e73220"
@@ -9428,6 +9433,11 @@ simple-swizzle@^0.2.2:
   integrity sha1-pNprY1/8zMoz9w0Xy5JZLeleVXo=
   dependencies:
     is-arrayish "^0.3.1"
+
+sinomap@^0.5.1:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/sinomap/-/sinomap-0.5.1.tgz#03d0b480a95429ec7c537dd09f79270e1836187b"
+  integrity sha1-A9C0gKlUKex8U33Qn3knDhg2GHs=
 
 sisteransi@^1.0.0:
   version "1.0.0"
