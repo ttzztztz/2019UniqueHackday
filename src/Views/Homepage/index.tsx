@@ -7,6 +7,7 @@ import ChinaMap from "../../Containers/ChinaMap";
 import SearchBox from "../../Components/Search";
 import Sidebar from "../../Containers/SideBar";
 import Rank from "../../Containers/Rank";
+import Footer from "../../Components/Footer";
 
 interface Props extends WithStyles {}
 
@@ -25,6 +26,7 @@ class HomePage extends React.PureComponent<Props> {
                     </Grid>
                 </Grid>
                 <Rank />
+                <Footer />
             </div>
         );
     }

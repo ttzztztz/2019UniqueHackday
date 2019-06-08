@@ -12,8 +12,9 @@ const styles = createStyles({
         textAlign: "right"
     },
     "bar-platte": {
-        background: "white",
-        color: "black"
+        background: "#f7faff",
+        color: "black",
+        boxShadow: "0 0"
     }
 });
 

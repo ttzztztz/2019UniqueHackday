@@ -7,7 +7,7 @@ const styles = createStyles({
         width: "150px",
         height: "65px",
         padding: "8px",
-        background: "dodgerblue",
+        background: "#fd504d",
         opacity: 0.7,
         color: "white",
         userSelect: "none"

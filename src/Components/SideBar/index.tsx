@@ -26,7 +26,13 @@ class SideBar extends React.PureComponent<Props> {
         const { city, classes } = this.props;
         return (
             <>
-                <Tabs value={value} onChange={this.handleChange} centered variant="fullWidth">
+                <Tabs
+                    value={value}
+                    onChange={this.handleChange}
+                    centered
+                    variant="fullWidth"
+                    className={classes["sider-tab"]}
+                >
                     <Tab label="数据概况" />
                     <Tab label="热点事件Top5" />
                     <Tab label="变化最大Top5" />
