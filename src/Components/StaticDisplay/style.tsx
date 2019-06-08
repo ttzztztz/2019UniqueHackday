@@ -9,7 +9,8 @@ const styles = createStyles({
         margin: "12px 18px"
     },
     "static-display-title": {
-        margin: "0"
+        margin: "0",
+        fontWeight: 500
     },
     "static-display-divider": {
         margin: "8px 0"

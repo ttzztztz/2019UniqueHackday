@@ -8,6 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
 
 import EventItem from "./eventItem";
+import EventGraph from "./eventGraph";
 
 interface Props extends WithStyles {}
 class ImportantEvents extends React.PureComponent<Props> {
@@ -24,7 +25,7 @@ class ImportantEvents extends React.PureComponent<Props> {
         const { value } = this.state;
         return (
             <>
-                <Grid container spacing={2}>
+                <Grid container spacing={3}>
                     <Grid item xs={4} className={classes["bar-container"]}>
                         <AppBar position="static" className={classes["bar"]}>
                             <Tabs value={value} onChange={this.handleChange} centered variant="fullWidth">
@@ -36,7 +37,9 @@ class ImportantEvents extends React.PureComponent<Props> {
                             <EventItem title="洪志远" hot={180} region="湖北" date="2019/06/09" />
                         </>
                     </Grid>
-                    <Grid item xs={8} />
+                    <Grid item xs={8}>
+                        <EventGraph />
+                    </Grid>
                 </Grid>
             </>
         );

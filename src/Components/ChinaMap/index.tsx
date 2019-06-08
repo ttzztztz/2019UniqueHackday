@@ -84,6 +84,7 @@ class ChinaMap extends React.PureComponent<Props> {
 
         const choropleth = new ChoroplethLayer({
             color: "#fd504d",
+            responsive: true,
             level: 1,
             data: cityInfo,
             // 光标移入区域时触发
