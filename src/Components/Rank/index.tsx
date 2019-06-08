@@ -1,11 +1,14 @@
 import React from "react";
-import { withStyles, WithStyles } from "@material-ui/core/styles";
 import styles from "./style";
+
+import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
+
+import TypeLabel from "../TypeLabel";
 
 interface Props extends WithStyles {
     rank: Array<any>;
@@ -35,7 +38,7 @@ class Rank extends React.PureComponent<Props> {
                 </TableHead>
                 <TableBody>
                     {data.map((item, key) => (
-                        <TableRow key={key}>
+                        <TableRow key={key} className={classes["table-item"]}>
                             <TableCell align="center">{(key + 1).toString()}</TableCell>
                             <TableCell align="center">
                                 <a href={item.href} target="_blank">
@@ -43,7 +46,9 @@ class Rank extends React.PureComponent<Props> {
                                 </a>
                             </TableCell>
                             <TableCell align="center">{item.hot.toFixed(2)}</TableCell>
-                            <TableCell align="center">{item.area}</TableCell>
+                            <TableCell align="center">
+                                <TypeLabel content={item.area} />
+                            </TableCell>
                             <TableCell align="center">{item.region}</TableCell>
                         </TableRow>
                     ))}

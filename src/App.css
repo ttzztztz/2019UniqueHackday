@@ -7,3 +7,8 @@ a {
     text-decoration: none;
     color: black;
 }
+
+.MuiIconButton-root:hover {
+    background: #fd504d99 !important;
+    color: "white";
+}

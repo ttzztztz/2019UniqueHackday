@@ -34,10 +34,10 @@ class DetailView extends React.Component<Props> {
                         <StaticDisplay data={basicStatics.events + "件"} title="事件数" color="black" />
                     </Grid>
                     <Grid item xs={4}>
-                        <StaticDisplay data={basicStatics.up + "件"} title="热度上升" color="#c43c2c" />
+                        <StaticDisplay data={basicStatics.up + "件"} title="热度上升↑" color="#FDC84D" />
                     </Grid>
                     <Grid item xs={4}>
-                        <StaticDisplay data={basicStatics.down + "件"} title="热度下降" color="#45B485" />
+                        <StaticDisplay data={basicStatics.down + "件"} title="热度下降↓" color="#7AA2FF" />
                     </Grid>
                 </Grid>
                 <h3 className={classes["item-data-title"]}>类型占比</h3>
@@ -86,19 +86,19 @@ class DetailView extends React.Component<Props> {
                     {
                         data: basicPercent,
                         backgroundColor: [
-                            "#02a9ed",
-                            "#0a54cf",
-                            "#02a9ed",
-                            "#0a54cf",
-                            "#02a9ed",
-                            "#0a54cf",
-                            "#02a9ed",
-                            "#0a54cf",
-                            "#02a9ed",
-                            "#0a54cf",
-                            "#02a9ed",
-                            "#0a54cf",
-                            "#02a9ed"
+                            "#FFD300",
+                            "#4BFFE1",
+                            "#5B45CB",
+                            "#54C7FC",
+                            "#FF4D4D",
+                            "#3AC31E",
+                            "#DB993D",
+                            "#DB79D9",
+                            "#D2DB3C",
+                            "#22B5C3",
+                            "#FF1F7B",
+                            "#44DB5E",
+                            "#538AFF"
                         ]
                     }
                 ],

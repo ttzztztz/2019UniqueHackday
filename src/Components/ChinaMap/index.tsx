@@ -71,7 +71,7 @@ class ChinaMap extends React.PureComponent<Props> {
         const [obj] = this.props.cityInfo.filter(item => item.name === cityName);
 
         if (obj) {
-            return obj["value"];
+            return obj["description"];
         } else {
             return "";
         }

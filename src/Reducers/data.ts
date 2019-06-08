@@ -20,7 +20,10 @@ type Action =
     | actions.IChangePercent;
 
 const initState: DataStore = {
-    cityInfo: [{ name: "北京", value: 1989 }, { name: "江苏", value: 1999 }],
+    cityInfo: [
+        { name: "北京", value: 1989, description: "北京高考" },
+        { name: "江苏", value: 1999, description: "江苏作文" }
+    ],
     top5Hot: [
         {
             rank: 1,

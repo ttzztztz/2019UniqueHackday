@@ -9,7 +9,8 @@ const styles = createStyles({
         padding: "8px",
         background: "dodgerblue",
         opacity: 0.7,
-        color: "white"
+        color: "white",
+        userSelect: "none"
     }
 });
 
