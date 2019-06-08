@@ -8,6 +8,7 @@ import ChoroplethLayer from "sinomap/dist/layers/choropleth";
 
 interface Props extends WithStyles {
     cityInfo: Array<any>;
+    changeCity: (cityName: string) => void;
 }
 
 class ChinaMap extends React.PureComponent<Props> {
@@ -32,11 +33,24 @@ class ChinaMap extends React.PureComponent<Props> {
             layerY: event.clientY + 15
         });
 
+    handleMouseDown = () => {
+        if (this.state.showLayer && this.state.mouseInto) {
+            this.props.changeCity(this.state.layerName);
+        } else {
+            this.props.changeCity("全国");
+        }
+    };
+
     render() {
         const { classes } = this.props;
         return (
             <>
-                <div id="chinaMap" onMouseOut={this.handleMouseOut} onMouseMove={this.handleMouseMove} />
+                <div
+                    id="chinaMap"
+                    onMouseOut={this.handleMouseOut}
+                    onMouseMove={this.handleMouseMove}
+                    onMouseDown={this.handleMouseDown}
+                />
                 <div
                     id="mouse-layer"
                     className={classes["map-layer"]}
@@ -55,6 +69,7 @@ class ChinaMap extends React.PureComponent<Props> {
 
     renderCityInfo = (cityName: string) => {
         const [obj] = this.props.cityInfo.filter(item => item.name === cityName);
+
         if (obj) {
             return obj["value"];
         } else {

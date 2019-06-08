@@ -8,11 +8,16 @@ import Grid from "@material-ui/core/Grid";
 
 interface Props extends WithStyles {
     city: string;
+    statics: {
+        basic: Array<any>;
+        percent: Array<any>;
+    };
 }
 
-class DetailView extends React.PureComponent<Props> {
+class DetailView extends React.Component<Props> {
     render() {
         const { classes } = this.props;
+
         return (
             <div className={classes["item-paper"]}>
                 <h3 className={classes["item-data-title"]}>基础数据</h3>

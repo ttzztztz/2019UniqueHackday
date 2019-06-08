@@ -36,3 +36,42 @@ export const changeTOP5Change = function(data: Array<any>): IChangeTOP5Change {
         data: data
     };
 };
+
+export const CHANGE_BASIC_STATIC = "CHANGE_BASIC_STATIC";
+export type CHANGE_BASIC_STATIC = typeof CHANGE_BASIC_STATIC;
+export interface IChangeBasicStatic {
+    type: CHANGE_BASIC_STATIC;
+    data: Array<any>;
+}
+export const changeBasicStatic = function(data: Array<any>): IChangeBasicStatic {
+    return {
+        type: CHANGE_BASIC_STATIC,
+        data: data
+    };
+};
+
+export const CHANGE_PERCENT = "CHANGE_PERCENT";
+export type CHANGE_PERCENT = typeof CHANGE_PERCENT;
+export interface IChangePercent {
+    type: CHANGE_PERCENT;
+    data: Array<any>;
+}
+export const changePercent = function(data: Array<any>): IChangePercent {
+    return {
+        type: CHANGE_PERCENT,
+        data: data
+    };
+};
+
+export const CHANGE_RANK = "CHANGE_RANK";
+export type CHANGE_RANK = typeof CHANGE_RANK;
+export interface IChangeRank {
+    type: CHANGE_RANK;
+    data: Array<any>;
+}
+export const changeRank = function(data: Array<any>): IChangeRank {
+    return {
+        type: CHANGE_RANK,
+        data: data
+    };
+};

@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./style";
 
 import TopView from "../../Containers/SideBar/TOP";
-import DetailView from "./detail";
+import DetailView from "../../Containers/SideBar/detail";
 
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";

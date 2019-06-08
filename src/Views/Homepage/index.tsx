@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import ChinaMap from "../../Containers/ChinaMap";
 import SearchBox from "../../Components/Search";
 import Sidebar from "../../Containers/SideBar";
+import Rank from "../../Containers/Rank";
 
 interface Props extends WithStyles {}
 
@@ -19,10 +20,11 @@ class HomePage extends React.PureComponent<Props> {
                     <Grid item xs={7}>
                         <ChinaMap />
                     </Grid>
-                    <Grid item xs={5}>
+                    <Grid item xs={5} className="hide-mobile">
                         <Sidebar />
                     </Grid>
                 </Grid>
+                <Rank />
             </div>
         );
     }
