@@ -7,6 +7,7 @@ export interface DataStore {
     top5Change: Array<TYPINGS.ITop5Change>;
     rank: Array<TYPINGS.IRank>;
     statics: TYPINGS.IStatics;
+    important: Array<TYPINGS.IImportant>;
 }
 
 type Action =
@@ -125,7 +126,18 @@ const initState: DataStore = {
                 data: [99, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
             }
         ]
-    }
+    },
+    important: [
+        {
+            title: "洪志远",
+            area: "计算机科学",
+            sensitivePercent: "12%",
+            hotPercent: "25%",
+            topPercent: "8%",
+            intoTotal: 222,
+            hotHistoryData: [1, 7, 4, 2, 6, 5]
+        }
+    ]
 };
 
 export const dataReducer = function(state = initState, action: Action): DataStore {

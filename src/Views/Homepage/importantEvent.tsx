@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./importantEventsStyle";
+import styles from "./importantEventStyle";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 
 import Tabs from "@material-ui/core/Tabs";
@@ -9,8 +9,12 @@ import AppBar from "@material-ui/core/AppBar";
 
 import EventItem from "./eventItem";
 import EventGraph from "../../Containers/EventGraph";
+import { IImportant } from "../../Typings";
 
-interface Props extends WithStyles {}
+interface Props extends WithStyles {
+    important: Array<IImportant>;
+}
+
 class ImportantEvents extends React.PureComponent<Props> {
     state = {
         value: 0

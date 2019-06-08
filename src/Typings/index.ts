@@ -47,3 +47,13 @@ export interface IStaticsPercent {
     name: string;
     data: Array<number>;
 }
+
+export interface IImportant {
+    title: string;
+    area: string;
+    sensitivePercent: string;
+    hotPercent: string;
+    topPercent: string;
+    intoTotal: number;
+    hotHistoryData: Array<number>;
+}

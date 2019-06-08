@@ -6,8 +6,8 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
 import SearchBox from "../../Components/Search";
-import HotEvents from "./hotEvents";
-import ImportantEvents from "./importantEvents";
+import HotEvents from "./hotEvent";
+import ImportantEvent from "../../Containers/ImportantEvent";
 
 interface Props extends WithStyles {}
 
@@ -38,7 +38,7 @@ class HomePage extends React.PureComponent<Props> {
                     <Tab label="重大事件" />
                 </Tabs>
                 {value === 0 && <HotEvents />}
-                {value === 1 && <ImportantEvents />}
+                {value === 1 && <ImportantEvent />}
             </div>
         );
     }
