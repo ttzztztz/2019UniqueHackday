@@ -1,25 +1,17 @@
 import React from "react";
 import { Provider } from "react-redux";
-import { applyMiddleware, createStore } from "redux";
-import { reducers } from "./Reducers";
-import { epicMiddleware, epics } from "./Epics";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import Bar from "./Containers/Bar";
 import Homepage from "./Views/Homepage";
 import withRoot from "./Styles/WithRoot";
 import Footer from "./Components/Footer";
+import Store from "./Reducers/store";
 import "./App.css";
-
-const middleware = [epicMiddleware];
-
-export const store = createStore(reducers, applyMiddleware(...middleware));
-
-epicMiddleware.run(epics);
 
 const App: React.FC = () => {
     return (
-        <Provider store={store}>
+        <Provider store={Store}>
             <BrowserRouter>
                 <Bar />
                 <Switch>
