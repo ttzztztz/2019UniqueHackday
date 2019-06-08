@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./style";
+import * as TYPINGS from "../../Typings";
 
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Table from "@material-ui/core/Table";

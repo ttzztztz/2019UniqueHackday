@@ -1,17 +1,14 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import style from "./detailStyle";
-
+import * as TYPINGS from "../../Typings";
 import { Chart } from "chart.js";
 import StaticDisplay from "../StaticDisplay";
 import Grid from "@material-ui/core/Grid";
 
 interface Props extends WithStyles {
     city: string;
-    statics: {
-        basic: Array<any>;
-        percent: Array<any>;
-    };
+    statics: TYPINGS.IStatics;
 }
 
 class DetailView extends React.Component<Props> {

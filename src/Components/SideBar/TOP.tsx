@@ -1,15 +1,15 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import style from "./TOPStyle";
-
+import * as TYPINGS from "../../Typings";
 import NewsItem from "./newsItem";
 
 interface Props extends WithStyles {
     city: string;
     type: "change" | "hot";
     data: {
-        change: Array<any>;
-        hot: Array<any>;
+        change: Array<TYPINGS.ITop5Change>;
+        hot: Array<TYPINGS.ITop5Hot>;
     };
 }
 

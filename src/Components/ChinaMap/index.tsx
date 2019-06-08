@@ -1,13 +1,14 @@
 import React from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import styles from "./style";
+import * as TYPINGS from "../../Typings";
 
 import Sinomap from "sinomap";
 import china from "sinomap/resources/china.json";
 import ChoroplethLayer from "sinomap/dist/layers/choropleth";
 
 interface Props extends WithStyles {
-    cityInfo: Array<any>;
+    cityInfo: Array<TYPINGS.ICityInfo>;
     changeCity: (cityName: string) => void;
 }
 

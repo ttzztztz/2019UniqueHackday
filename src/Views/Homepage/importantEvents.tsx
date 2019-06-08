@@ -7,6 +7,8 @@ import Tab from "@material-ui/core/Tab";
 import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
 
+import EventItem from "./eventItem";
+
 interface Props extends WithStyles {}
 class ImportantEvents extends React.PureComponent<Props> {
     state = {
@@ -30,6 +32,9 @@ class ImportantEvents extends React.PureComponent<Props> {
                                 <Tab label="热度均值降序" />
                             </Tabs>
                         </AppBar>
+                        <>
+                            <EventItem title="洪志远" hot={180} region="湖北" date="2019/06/09" />
+                        </>
                     </Grid>
                     <Grid item xs={8} />
                 </Grid>

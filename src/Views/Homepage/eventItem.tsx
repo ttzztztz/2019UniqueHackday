@@ -1,8 +1,7 @@
 import React from "react";
-import styles from "./hotEventsStyle";
+import styles from "./eventItemStyle";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 
-import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import HotIcon from "@material-ui/icons/Whatshot";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
@@ -17,9 +16,9 @@ class HotEvents extends React.PureComponent<Props> {
     render() {
         const { classes, title, hot, region, date } = this.props;
         return (
-            <Paper className={classes["item-paper"]}>
+            <div className={classes["item-paper"]}>
                 <Grid container>
-                    <Grid item xs={1}>
+                    <Grid item xs={1} className={classes["circle-container"]}>
                         <div className={classes["circle"]} />
                     </Grid>
                     <Grid item xs={8}>
@@ -31,15 +30,17 @@ class HotEvents extends React.PureComponent<Props> {
                     </Grid>
                 </Grid>
                 <Grid container className={classes["hot-container"]}>
-                    <Grid item xs={3}>
+                    <Grid item xs={1} className={classes["circle-container"]}>
                         <LocationOnIcon className={classes["item-icon"]} />
+                    </Grid>
+                    <Grid item xs={2}>
                         {region}
                     </Grid>
                     <Grid item xs={3}>
                         {date}
                     </Grid>
                 </Grid>
-            </Paper>
+            </div>
         );
     }
 }
