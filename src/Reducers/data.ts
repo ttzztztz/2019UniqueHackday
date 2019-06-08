@@ -1,44 +1,12 @@
 import * as actions from "../Actions/data";
+import * as TYPINGS from "../Typings";
 
 export interface DataStore {
-    cityInfo: Array<{
-        name: string;
-        value: number;
-        description: string;
-    }>;
-    top5Hot: Array<{
-        rank: number;
-        title: string;
-        region: string;
-        hot: number;
-        area: string;
-        href: string;
-    }>;
-    top5Change: Array<{
-        rank: number;
-        title: string;
-        region: string;
-        hot: number;
-        area: string;
-        href: string;
-    }>;
-    rank: Array<{
-        rank: number;
-        title: string;
-        region: string;
-        hot: number;
-        area: string;
-        href: string;
-    }>;
-    statics: {
-        basic: Array<{
-            name: string;
-            events: number;
-            up: number;
-            down: number;
-        }>;
-        percent: Array<{ name: string; data: Array<number> }>;
-    };
+    cityInfo: Array<TYPINGS.ICityInfo>;
+    top5Hot: Array<TYPINGS.ITop5Hot>;
+    top5Change: Array<TYPINGS.ITop5Change>;
+    rank: Array<TYPINGS.IRank>;
+    statics: TYPINGS.IStatics;
 }
 
 type Action =
@@ -172,16 +140,16 @@ export const dataReducer = function(state = initState, action: Action): DataStor
             return {
                 ...state,
                 statics: {
-                    basic: [...state.statics.basic],
-                    percent: action.data
+                    basic: action.data,
+                    percent: [...state.statics.percent]
                 }
             };
         case actions.CHANGE_PERCENT:
             return {
                 ...state,
                 statics: {
-                    basic: action.data,
-                    percent: [...state.statics.percent]
+                    basic: [...state.statics.basic],
+                    percent: action.data
                 }
             };
         case actions.CHANGE_RANK:

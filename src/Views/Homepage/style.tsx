@@ -13,6 +13,9 @@ const styles = createStyles({
         main: {
             maxWidth: "95%"
         }
+    },
+    tab: {
+        marginBottom: "56px"
     }
 });
 
