@@ -15,11 +15,11 @@ class HomePage extends React.PureComponent<Props> {
         return (
             <div className={classes["main"]}>
                 <SearchBox />
-                <Grid container spacing={1} className={classes["first-grid"]}>
-                    <Grid item xs={6}>
+                <Grid container spacing={3} className={classes["first-grid"]}>
+                    <Grid item xs={7}>
                         <ChinaMap />
                     </Grid>
-                    <Grid item xs={6}>
+                    <Grid item xs={5}>
                         <Sidebar />
                     </Grid>
                 </Grid>

@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./style";
 
-import { Chart } from "chart.js";
 import TopView from "./TOP";
 import DetailView from "./detail";
 
@@ -24,7 +23,7 @@ class SideBar extends React.PureComponent<Props> {
     };
     render() {
         const { value } = this.state;
-        const { city } = this.props;
+        const { city, classes } = this.props;
         return (
             <>
                 <Tabs value={value} onChange={this.handleChange} centered variant="fullWidth">
@@ -32,27 +31,13 @@ class SideBar extends React.PureComponent<Props> {
                     <Tab label="热点事件Top5" />
                     <Tab label="变化最大Top5" />
                 </Tabs>
-                {value === 0 && <DetailView city={city} />}
-                {value === 1 && <TopView type="hot" city={city} />}
-                {value === 2 && <TopView type="change" city={city} />}
+                <div className={classes["news-item-container"]}>
+                    {value === 0 && <DetailView city={city} />}
+                    {value === 1 && <TopView type="hot" city={city} />}
+                    {value === 2 && <TopView type="change" city={city} />}
+                </div>
             </>
         );
-    }
-    componentDidMount() {
-        // const ctx = document.getElementById("charts");
-        // new Chart(ctx, {
-        //     type: "pie",
-        //     data: {
-        //         labels: ["经济", "民生"],
-        //         datasets: [
-        //             {
-        //                 label: "# of Votes",
-        //                 data: [12, 19],
-        //                 backgroundColor: ["#02a9ed", "#0a54cf"]
-        //             }
-        //         ]
-        //     }
-        // });
     }
 }
 
