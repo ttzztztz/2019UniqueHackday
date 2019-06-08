@@ -22,7 +22,7 @@ class EventGraph extends React.PureComponent<Props> {
     render() {
         const { classes, title, area, sensitivePercent, hotPercent, topPercent, intoTotal } = this.props;
         return (
-            <div className={classes["item-paper"]}>
+            <div className={classes["item-paper"]} id="graph-container">
                 <div className={classes["item-front"]}>
                     <TypeLabel content={area} />
                     <Typography variant="h6" className={classes["item-title"]}>
@@ -59,11 +59,14 @@ class EventGraph extends React.PureComponent<Props> {
                 <Typography variant="h6" className={classes["item-title-sub"]}>
                     热度走势
                 </Typography>
-                <canvas id="hotWalk" />
+                <canvas id="hot-walk" />
             </div>
         );
     }
     componentDidMount() {
+        this.renderGraph();
+    }
+    componentDidUpdate() {
         this.renderGraph();
     }
     renderDate = () => {
@@ -78,14 +81,19 @@ class EventGraph extends React.PureComponent<Props> {
         return resultArr;
     };
     renderGraph = () => {
-        const newElem = document.getElementById("hotWalk");
+        const parent = document.getElementById("graph-container");
+        parent.removeChild(document.getElementById("hot-walk"));
+        const newElem = document.createElement("canvas");
+        newElem.id = "hot-walk";
+        parent.appendChild(newElem);
+
         const chartOptions = {
             type: "line",
             data: {
                 labels: this.renderDate(),
                 datasets: [
                     {
-                        label: "走势",
+                        label: "热度",
                         data: this.props.hotHistoryData,
                         backgroundColor: "#FFD300",
                         borderColor: "#FFD300",
@@ -109,7 +117,7 @@ class EventGraph extends React.PureComponent<Props> {
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: "Month"
+                                labelString: "时间"
                             }
                         }
                     ],
@@ -118,7 +126,7 @@ class EventGraph extends React.PureComponent<Props> {
                             display: true,
                             scaleLabel: {
                                 display: true,
-                                labelString: "Value"
+                                labelString: "热度"
                             }
                         }
                     ]

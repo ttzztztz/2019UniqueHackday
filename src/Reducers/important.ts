@@ -10,7 +10,7 @@ export interface ImportantStore {
     hotHistoryData: Array<number>;
 }
 
-type Action = actions.IChangeImportant;
+type Action = actions.IUpdateImportant;
 
 const initState: ImportantStore = {
     title: "洪志远",
@@ -24,7 +24,7 @@ const initState: ImportantStore = {
 
 export const importantReducer = function(state = initState, action: Action): ImportantStore {
     switch (action.type) {
-        case actions.CHANGE_IMPORTANT:
+        case actions.UPDATE_IMPORTANT:
             const { data } = action;
             return { ...state, ...data };
     }

@@ -16,7 +16,8 @@ type Action =
     | actions.IChangeTOP5Hot
     | actions.IChangeRank
     | actions.IChangeBasicStatic
-    | actions.IChangePercent;
+    | actions.IChangePercent
+    | actions.IChangeImportant;
 
 const initState: DataStore = {
     cityInfo: [
@@ -135,7 +136,20 @@ const initState: DataStore = {
             hotPercent: "25%",
             topPercent: "8%",
             intoTotal: 222,
-            hotHistoryData: [1, 7, 4, 2, 6, 5]
+            hotHistoryData: [1, 7, 4, 2, 6, 5],
+            region: "湖北",
+            date: "2019/06/09"
+        },
+        {
+            title: "洪志远2号",
+            area: "前端科学",
+            sensitivePercent: "2%",
+            hotPercent: "7%",
+            topPercent: "44%",
+            intoTotal: 211,
+            hotHistoryData: [1, 2, 6, 4, 2, 9],
+            region: "江苏",
+            date: "2019/06/09"
         }
     ]
 };
@@ -166,6 +180,8 @@ export const dataReducer = function(state = initState, action: Action): DataStor
             };
         case actions.CHANGE_RANK:
             return { ...state, rank: action.data };
+        case actions.CHANGE_IMPORTANT:
+            return { ...state, important: [...action.data] };
     }
     return state;
 };

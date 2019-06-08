@@ -11,12 +11,13 @@ interface Props extends WithStyles {
     hot: number;
     region: string;
     date: string;
+    onClick: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 class HotEvents extends React.PureComponent<Props> {
     render() {
-        const { classes, title, hot, region, date } = this.props;
+        const { classes, title, hot, region, date, onClick } = this.props;
         return (
-            <div className={classes["item-paper"]}>
+            <div className={classes["item-paper"]} onClick={onClick}>
                 <Grid container>
                     <Grid item xs={1} className={classes["circle-container"]}>
                         <div className={classes["circle"]} />

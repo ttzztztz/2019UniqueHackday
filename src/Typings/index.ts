@@ -56,4 +56,6 @@ export interface IImportant {
     topPercent: string;
     intoTotal: number;
     hotHistoryData: Array<number>;
+    region: string;
+    date: string;
 }

@@ -3,7 +3,7 @@ import { createStyles } from "@material-ui/core/styles";
 const styles = createStyles({
     footer: {
         textAlign: "center",
-        marginTop: "48px"
+        marginTop: "64px"
     },
     "footer-nav": {
         height: "48px",

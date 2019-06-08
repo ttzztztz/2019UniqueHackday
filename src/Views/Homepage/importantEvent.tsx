@@ -13,6 +13,7 @@ import { IImportant } from "../../Typings";
 
 interface Props extends WithStyles {
     important: Array<IImportant>;
+    dispatchChangeImportantGraph: (data: IImportant) => void;
 }
 
 class ImportantEvents extends React.PureComponent<Props> {
@@ -24,8 +25,11 @@ class ImportantEvents extends React.PureComponent<Props> {
             value: newValue
         });
     };
+    handleClick = (item: IImportant) => (_event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        this.props.dispatchChangeImportantGraph(item);
+    };
     render() {
-        const { classes } = this.props;
+        const { classes, important } = this.props;
         const { value } = this.state;
         return (
             <>
@@ -37,9 +41,16 @@ class ImportantEvents extends React.PureComponent<Props> {
                                 <Tab label="热度均值降序" />
                             </Tabs>
                         </AppBar>
-                        <>
-                            <EventItem title="洪志远" hot={180} region="湖北" date="2019/06/09" />
-                        </>
+                        {important.map((item, key) => (
+                            <EventItem
+                                key={key}
+                                title={item.title}
+                                hot={item.intoTotal}
+                                region={item.region}
+                                date={item.date}
+                                onClick={this.handleClick(item)}
+                            />
+                        ))}
                     </Grid>
                     <Grid item xs={8}>
                         <EventGraph />

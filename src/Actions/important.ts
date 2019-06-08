@@ -1,14 +1,14 @@
 import * as TYPINGS from "../Typings";
 
-export const CHANGE_IMPORTANT = "CHANGE_IMPORTANT";
-export type CHANGE_IMPORTANT = typeof CHANGE_IMPORTANT;
-export interface IChangeImportant {
-    type: CHANGE_IMPORTANT;
+export const UPDATE_IMPORTANT = "UPDATE_IMPORTANT";
+export type UPDATE_IMPORTANT = typeof UPDATE_IMPORTANT;
+export interface IUpdateImportant {
+    type: UPDATE_IMPORTANT;
     data: TYPINGS.IImportant;
 }
-export const changeImportant = function(data: TYPINGS.IImportant): IChangeImportant {
+export const updateImportant = function(data: TYPINGS.IImportant): IUpdateImportant {
     return {
-        type: CHANGE_IMPORTANT,
+        type: UPDATE_IMPORTANT,
         data: data
     };
 };

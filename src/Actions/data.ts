@@ -77,3 +77,16 @@ export const changeRank = function(data: Array<TYPINGS.IRank>): IChangeRank {
         data: data
     };
 };
+
+export const CHANGE_IMPORTANT = "CHANGE_IMPORTANT";
+export type CHANGE_IMPORTANT = typeof CHANGE_IMPORTANT;
+export interface IChangeImportant {
+    type: CHANGE_IMPORTANT;
+    data: Array<TYPINGS.IImportant>;
+}
+export const changeImportant = function(data: Array<TYPINGS.IImportant>): IChangeImportant {
+    return {
+        type: CHANGE_IMPORTANT,
+        data: data
+    };
+};

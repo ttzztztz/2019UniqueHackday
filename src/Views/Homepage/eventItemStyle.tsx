@@ -24,7 +24,8 @@ const styles = createStyles({
     "item-paper": {
         height: "72px",
         padding: "12px",
-        margin: "9px auto"
+        margin: "9px auto",
+        cursor: "pointer"
     }
 });
 
