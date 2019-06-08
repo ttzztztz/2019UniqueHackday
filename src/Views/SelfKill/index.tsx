@@ -6,6 +6,9 @@ import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 import AvatarImg from "./avatar.png";
 
+import UserDetect from "../../Components/UserDetect";
+import RealTimeBlog from "../../Components/RealTimeBlog";
+
 interface Props extends WithStyles {}
 
 class SelfKill extends React.PureComponent<Props> {
@@ -33,9 +36,13 @@ class SelfKill extends React.PureComponent<Props> {
                     variant="fullWidth"
                     className={classes["tab"]}
                 >
-                    <Tab label="实时博文" />
                     <Tab label="用户监测" />
+                    <Tab label="实时博文" />
                 </Tabs>
+                <div className={classes["self-kill-item-container"]}>
+                    {value === 0 && <UserDetect />}
+                    {value === 1 && <RealTimeBlog />}
+                </div>
             </div>
         );
     }

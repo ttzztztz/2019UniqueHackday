@@ -8,6 +8,9 @@ const styles = createStyles({
     "avatar-container": {
         textAlign: "center",
         margin: "48px auto"
+    },
+    "self-kill-item-container": {
+        margin: "18px auto"
     }
 });
 
