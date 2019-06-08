@@ -8,7 +8,7 @@ import Grid from "@material-ui/core/Grid";
 import AppBar from "@material-ui/core/AppBar";
 
 import EventItem from "./eventItem";
-import EventGraph from "./eventGraph";
+import EventGraph from "../../Containers/EventGraph";
 
 interface Props extends WithStyles {}
 class ImportantEvents extends React.PureComponent<Props> {

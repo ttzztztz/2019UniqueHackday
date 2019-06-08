@@ -8,17 +8,25 @@ import TypeLabel from "../../Components/TypeLabel";
 import StaticDisplay from "../../Components/StaticDisplay";
 import { Chart } from "chart.js";
 
-interface Props extends WithStyles {}
+interface Props extends WithStyles {
+    title: string;
+    area: string;
+    sensitivePercent: string;
+    hotPercent: string;
+    topPercent: string;
+    intoTotal: number;
+    hotHistoryData: Array<number>;
+}
 
 class EventGraph extends React.PureComponent<Props> {
     render() {
-        const { classes } = this.props;
+        const { classes, title, area, sensitivePercent, hotPercent, topPercent, intoTotal } = this.props;
         return (
             <div className={classes["item-paper"]}>
                 <div className={classes["item-front"]}>
-                    <TypeLabel content="计算机科学" />
+                    <TypeLabel content={area} />
                     <Typography variant="h6" className={classes["item-title"]}>
-                        洪志远提出“洪志远树”，可以在O(1)时间插入、删除、查找
+                        {title}
                     </Typography>
                 </div>
 
@@ -27,15 +35,25 @@ class EventGraph extends React.PureComponent<Props> {
                     24小时数据概括
                 </Typography>
                 <div>
-                    <StaticDisplay color="black" title="信息总量" data="2133" className={classes["item-card"]} />
                     <StaticDisplay
-                        color="#FD504D"
-                        title="敏感信息/占比"
-                        data="31/1.58%"
+                        color="black"
+                        title="信息总量"
+                        data={intoTotal.toString()}
                         className={classes["item-card"]}
                     />
-                    <StaticDisplay color="#FD504D" title="热度比值" data="8.75" className={classes["item-card"]} />
-                    <StaticDisplay color="black" title="峰值热度" data="35.01" className={classes["item-card"]} />
+                    <StaticDisplay
+                        color="#FD504D"
+                        title="敏感信息占比"
+                        data={sensitivePercent}
+                        className={classes["item-card"]}
+                    />
+                    <StaticDisplay
+                        color="#FD504D"
+                        title="热度比值"
+                        data={hotPercent}
+                        className={classes["item-card"]}
+                    />
+                    <StaticDisplay color="black" title="峰值热度" data={topPercent} className={classes["item-card"]} />
                 </div>
                 <Divider className={classes["divider"]} />
                 <Typography variant="h6" className={classes["item-title-sub"]}>
@@ -68,7 +86,7 @@ class EventGraph extends React.PureComponent<Props> {
                 datasets: [
                     {
                         label: "走势",
-                        data: [1, 3, 7, 2, 5, 6],
+                        data: this.props.hotHistoryData,
                         backgroundColor: "#FFD300",
                         borderColor: "#FFD300",
                         fill: false
