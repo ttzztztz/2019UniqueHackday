@@ -33,7 +33,7 @@ class Rank extends React.PureComponent<Props> {
                         <TableCell />
                         <TableCell align="center">名称</TableCell>
                         <TableCell align="center">热度</TableCell>
-                        <TableCell align="center">类型</TableCell>
+                        {/* <TableCell align="center">类型</TableCell> */}
                         <TableCell align="center">地域</TableCell>
                     </TableRow>
                 </TableHead>
@@ -47,9 +47,9 @@ class Rank extends React.PureComponent<Props> {
                                 </a>
                             </TableCell>
                             <TableCell align="center">{item.hot}</TableCell>
-                            <TableCell align="center">
+                            {/* <TableCell align="center">
                                 <TypeLabel content={item.area} />
-                            </TableCell>
+                            </TableCell> */}
                             <TableCell align="center">{item.region}</TableCell>
                         </TableRow>
                     ))}

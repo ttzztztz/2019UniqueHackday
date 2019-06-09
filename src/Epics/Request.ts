@@ -98,7 +98,7 @@ const changeTop5Hot: Epic = action$ =>
                         title: item.incidentTitle,
                         region: item.province,
                         hot: ((Math.random() * 10000) % 100).toFixed(2),
-                        area: "计算机科学",
+                        area: "",
                         href: item.originalUrl
                     }));
                     // .sort(($1, $2) => Number.parseInt($1.hot as string) - Number.parseInt($2.hot as string));
@@ -150,7 +150,7 @@ const changeTop5Change: Epic = action$ =>
                         title: item.incidentTitle,
                         region: item.province,
                         hot: ((Math.random() * 10000) % 100).toFixed(2),
-                        area: "计算机科学",
+                        area: "",
                         href: item.originalUrl
                     }));
                     // .sort(($1, $2) => Number.parseInt($1.hot) - Number.parseInt($2.hot));
