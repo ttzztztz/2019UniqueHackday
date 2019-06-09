@@ -19,10 +19,12 @@ interface Props extends WithStyles {
 class Rank extends React.PureComponent<Props> {
     render() {
         const { classes, rank, city } = this.props;
-        const data =
-            city === "全国"
-                ? rank.sort(($1, $2) => $2.hot - $1.hot)
-                : rank.filter(item => item.region === city).sort(($1, $2) => $2.hot - $1.hot);
+        const data = (city === "全国"
+            ? rank.sort(($1, $2) => Number.parseFloat($2.hot as string) - Number.parseFloat($1.hot as string))
+            : rank
+                  .filter(item => item.region === city)
+                  .sort(($1, $2) => Number.parseFloat($2.hot as string) - Number.parseFloat($1.hot as string))
+        ).slice(0, 5);
 
         return (
             <Table className={classes.table}>
@@ -44,7 +46,7 @@ class Rank extends React.PureComponent<Props> {
                                     {item.title}
                                 </a>
                             </TableCell>
-                            <TableCell align="center">{item.hot.toFixed(2)}</TableCell>
+                            <TableCell align="center">{item.hot}</TableCell>
                             <TableCell align="center">
                                 <TypeLabel content={item.area} />
                             </TableCell>

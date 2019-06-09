@@ -26,7 +26,7 @@ export interface IRank {
     rank: number;
     title: string;
     region: string;
-    hot: number;
+    hot: number | string;
     area: string;
     href: string;
 }

@@ -11,7 +11,7 @@ class FalseNews extends React.PureComponent<Props> {
         const { classes } = this.props;
         return (
             <div className={classes["main"]}>
-                <FalseItem content="洪志远" href="https://github.com/farawaaay" />
+                <FalseItem content="洪志远" href="https://github.com/farawaaay" fontSize="24" />
             </div>
         );
     }
