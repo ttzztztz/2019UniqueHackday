@@ -22,7 +22,7 @@ class FalseWeiboItem extends React.PureComponent<Props> {
     renderText = (content: string) => {
         const { expand } = this.state;
         if (expand) {
-            return content.length >= 320 ? content.substr(0, 320) + "..." : content;
+            return content;
         } else {
             return content.length >= 160 ? content.substr(0, 160) + "..." : content;
         }
@@ -34,7 +34,7 @@ class FalseWeiboItem extends React.PureComponent<Props> {
             <Button
                 className={classes["main"]}
                 variant="outlined"
-                style={{ fontSize: fontSize + "px", height: this.state.expand ? "240px" : "120px" }}
+                style={{ fontSize: fontSize + "px", height: this.state.expand ? "auto" : "120px" }}
                 onClick={this.handleOnClick}
             >
                 {this.renderText(content)}
