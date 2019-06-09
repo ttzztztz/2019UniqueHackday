@@ -2,7 +2,6 @@ import React from "react";
 import { withStyles, WithStyles } from "@material-ui/core/styles";
 import styles from "./style";
 
-import AvatarImg from "./avatar.png";
 import Typography from "@material-ui/core/Typography";
 
 interface Props extends WithStyles {
@@ -10,14 +9,16 @@ interface Props extends WithStyles {
     sex: string;
     birthday: string;
     location: string;
+    avatar: string;
+    tendency: string;
 }
 
 class DangerUserShow extends React.PureComponent<Props> {
     render() {
-        const { classes, name, sex, birthday, location } = this.props;
+        const { classes, name, sex, birthday, location, avatar, tendency } = this.props;
         return (
             <div className={classes["root"]}>
-                <img src={AvatarImg} />
+                <img src={avatar} />
                 <Typography variant="body2" className={classes["title"]}>
                     用户
                 </Typography>
@@ -34,6 +35,10 @@ class DangerUserShow extends React.PureComponent<Props> {
                     地点
                 </Typography>
                 <Typography variant="body1">{location}</Typography>
+                <Typography variant="body2" className={classes["title"]}>
+                    自杀倾向
+                </Typography>
+                <Typography variant="body1">{tendency}</Typography>
             </div>
         );
     }

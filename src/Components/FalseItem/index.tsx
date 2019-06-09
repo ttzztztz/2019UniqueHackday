@@ -6,25 +6,38 @@ import Button from "@material-ui/core/Button";
 
 interface Props extends WithStyles {
     content: string;
-    href: string;
     fontSize: string;
 }
 
 class FalseWeiboItem extends React.PureComponent<Props> {
-    handleOnClick = () => {
-        const { href } = this.props;
-        window.open(href);
+    state = {
+        expand: false
     };
+    handleOnClick = () => {
+        this.setState({
+            expand: !this.state.expand
+        });
+    };
+
+    renderText = (content: string) => {
+        const { expand } = this.state;
+        if (expand) {
+            return content.length >= 320 ? content.substr(0, 320) + "..." : content;
+        } else {
+            return content.length >= 160 ? content.substr(0, 160) + "..." : content;
+        }
+    };
+
     render() {
         const { classes, content, fontSize } = this.props;
         return (
             <Button
                 className={classes["main"]}
                 variant="outlined"
+                style={{ fontSize: fontSize + "px", height: this.state.expand ? "240px" : "120px" }}
                 onClick={this.handleOnClick}
-                style={{ fontSize: fontSize + "px" }}
             >
-                {content}
+                {this.renderText(content)}
             </Button>
         );
     }

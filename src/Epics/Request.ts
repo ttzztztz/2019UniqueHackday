@@ -8,6 +8,7 @@ import * as TYPE from "../Actions/epic";
 import * as TYPINGS from "../Typings";
 import * as ACTIONTYPE from "../Actions/data";
 import * as ACTIONCITYTYPE from "../Actions/city";
+import { AnyAction } from "redux";
 
 const DOMAIN = "https://www.yjwbenji.top/";
 
@@ -120,7 +121,11 @@ const changeTop5Hot: Epic = action$ =>
                         {
                             type: ACTIONTYPE.CHANGE_PROVINCE_REFLECTION,
                             data: provinceReflection
-                        } as ACTIONTYPE.IChangeProvinceReflection
+                        } as ACTIONTYPE.IChangeProvinceReflection,
+                        {
+                            type: TYPE.REQUEST_CITYDATA,
+                            data: data
+                        }
                     );
                 })
             );
@@ -162,9 +167,9 @@ const changeTop5Change: Epic = action$ =>
 const cityInfoChange: Epic = action$ =>
     action$.pipe(
         ofType(TYPE.REQUEST_CITYDATA),
-        mergeMap(() => {
+        mergeMap((action: AnyAction) => {
             return from(request(`${DOMAIN}china`)).pipe(
-                mergeMap(res => {
+                mergeMap((res: AnyAction) => {
                     const resArr = (res.data.list as any[]).reduce((p, v) => {
                         p = [...p, v];
                         return p;
@@ -201,9 +206,6 @@ const beginEpics: Epic = action$ =>
                 },
                 {
                     type: TYPE.REQUEST_TOP5HOT
-                },
-                {
-                    type: TYPE.REQUEST_CITYDATA
                 },
                 {
                     type: TYPE.REQUEST_CHANGE_RANK

@@ -9,6 +9,10 @@ import Grid from "@material-ui/core/Grid";
 import ListItemText from "@material-ui/core/ListItemText";
 import DangerUserShow from "../../Components/DangerUserShow";
 
+import AvatarImg1 from "./1.jpg";
+import AvatarImg2 from "./2.jpg";
+import AvatarImg3 from "./3.jpg";
+
 interface Props extends WithStyles {}
 
 class UserDetect extends React.PureComponent<Props> {
@@ -47,10 +51,30 @@ class UserDetect extends React.PureComponent<Props> {
                     </Grid>
                     <Grid item xs={9}>
                         <div className={classes.content}>
-                            <DangerUserShow name="洪志远" sex="男" birthday="1998/07/01" location="武汉" />
-                            <DangerUserShow name="洪志远" sex="男" birthday="1998/07/01" location="武汉" />
-                            <DangerUserShow name="洪志远" sex="男" birthday="1998/07/01" location="武汉" />
-                            <DangerUserShow name="洪志远" sex="男" birthday="1998/07/01" location="武汉" />
+                            <DangerUserShow
+                                name="旅行到世界尽头丶"
+                                sex="男"
+                                birthday="1998/07/01"
+                                location="卢森堡"
+                                avatar={AvatarImg1}
+                                tendency="重度"
+                            />
+                            <DangerUserShow
+                                name="BETTY2013在行动"
+                                sex="女"
+                                birthday="1998/07/01"
+                                location="上海"
+                                avatar={AvatarImg2}
+                                tendency="重度"
+                            />
+                            <DangerUserShow
+                                name="Cheery小美女"
+                                sex="女"
+                                birthday="1998/07/01"
+                                location="浙江"
+                                avatar={AvatarImg3}
+                                tendency="轻度"
+                            />
                         </div>
                     </Grid>
                 </Grid>
