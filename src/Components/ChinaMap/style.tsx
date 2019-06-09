@@ -4,8 +4,8 @@ const styles = createStyles({
     "map-layer": {
         position: "fixed",
         borderRadius: "6px",
-        width: "150px",
-        height: "65px",
+        width: "175px",
+        height: "72px",
         padding: "8px",
         background: "#fd504d",
         opacity: 0.7,

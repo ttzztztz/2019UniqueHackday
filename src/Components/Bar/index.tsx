@@ -28,7 +28,7 @@ class Bar extends React.PureComponent<Props & RouteComponentProps> {
     };
     handleClickWrongSayings = () => {
         this.props.history.push({
-            pathname: "/wrongsayings"
+            pathname: "/false"
         });
     };
     render() {

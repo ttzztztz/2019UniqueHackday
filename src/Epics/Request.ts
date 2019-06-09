@@ -7,6 +7,7 @@ import { Epic } from "./index";
 import * as TYPE from "../Actions/epic";
 import * as TYPINGS from "../Typings";
 import * as ACTIONTYPE from "../Actions/data";
+import * as ACTIONCITYTYPE from "../Actions/city";
 
 const DOMAIN = "https://www.yjwbenji.top/";
 
@@ -92,30 +93,20 @@ const cityInfoChange: Epic = action$ =>
                         description: item.incidentTitle
                     }));
 
-                    return of({
-                        type: ACTIONTYPE.CHANGE_CITY_DATA,
-                        cityInfos: data
-                    } as ACTIONTYPE.IChangeCityData);
+                    return of(
+                        {
+                            type: ACTIONTYPE.CHANGE_CITY_DATA,
+                            cityInfos: data
+                        } as ACTIONTYPE.IChangeCityData,
+                        {
+                            type: ACTIONCITYTYPE.CHANGE_CITY_LOAD_STATUS,
+                            data: true
+                        }
+                    );
                 })
             );
         })
     );
-
-// const rankChange: Epic = action$ =>
-//     action$.pipe(
-//         ofType(TYPE.REQUEST_CHANGE_RANK),
-//         mergeMap(() => {
-//             return from(request(`${DOMAIN}rank`)).pipe(
-//                 mergeMap(res => {
-//                     const data = res;
-//                     return of({
-//                         type: ACTIONTYPE.CHANGE_RANK,
-//                         data: data
-//                     } as ACTIONTYPE.IChangeRank);
-//                 })
-//             );
-//         })
-//     );
 
 const beginEpics: Epic = action$ =>
     action$.pipe(

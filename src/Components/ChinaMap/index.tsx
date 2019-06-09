@@ -78,7 +78,7 @@ class ChinaMap extends React.PureComponent<Props> {
         }
     };
 
-    componentDidMount() {
+    renderMap = () => {
         const { cityInfo } = this.props;
         const that = this;
 
@@ -106,6 +106,9 @@ class ChinaMap extends React.PureComponent<Props> {
         });
 
         new Sinomap({ el: "#chinaMap", geoJSON: china, layers: [choropleth] });
+    };
+    componentDidMount() {
+        this.renderMap();
     }
 }
 

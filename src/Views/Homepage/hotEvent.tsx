@@ -7,16 +7,18 @@ import ChinaMap from "../../Containers/ChinaMap";
 import Sidebar from "../../Containers/SideBar";
 import Rank from "../../Containers/Rank";
 
-interface Props extends WithStyles {}
+interface Props extends WithStyles {
+    finishCityLoad: boolean;
+}
 
 class HotEvents extends React.PureComponent<Props> {
     render() {
-        const { classes } = this.props;
+        const { classes, finishCityLoad } = this.props;
         return (
             <>
                 <Grid container spacing={3} className={classes["first-grid"]}>
                     <Grid item xs={7}>
-                        <ChinaMap />
+                        {finishCityLoad && <ChinaMap />}
                     </Grid>
                     <Grid item xs={5} className="hide-mobile">
                         <Sidebar />

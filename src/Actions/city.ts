@@ -10,3 +10,16 @@ export const changeCity = function(cityName: string): IChangeCity {
         name: cityName
     };
 };
+
+export const CHANGE_CITY_LOAD_STATUS = "CHANGE_CITY_LOAD_STATUS";
+export type CHANGE_CITY_LOAD_STATUS = typeof CHANGE_CITY_LOAD_STATUS;
+export interface IChangeCityLoadStatus {
+    type: CHANGE_CITY_LOAD_STATUS;
+    data: boolean;
+}
+export const changeCityLoadStatus = function(status: boolean): IChangeCityLoadStatus {
+    return {
+        type: CHANGE_CITY_LOAD_STATUS,
+        data: status
+    };
+};

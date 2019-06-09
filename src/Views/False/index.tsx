@@ -5,15 +5,12 @@ import { withStyles, WithStyles } from "@material-ui/core/styles";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
 
-import SearchBox from "../../Components/Search";
-import HotEvents from "../../Containers/HotEvents";
-import ImportantEvent from "../../Containers/ImportantEvent";
+import FalseNews from "../../Components/FalseNews";
+import FalseWeibo from "../../Components/FalseWeibo";
 
-interface Props extends WithStyles {
-    beginDispatch: () => void;
-}
+interface Props extends WithStyles {}
 
-class HomePage extends React.PureComponent<Props> {
+class SelfKill extends React.PureComponent<Props> {
     state = {
         value: 0
     };
@@ -25,10 +22,8 @@ class HomePage extends React.PureComponent<Props> {
     render() {
         const { classes } = this.props;
         const { value } = this.state;
-
         return (
             <div className={classes["main"]}>
-                <SearchBox />
                 <Tabs
                     value={value}
                     onChange={this.handleChange}
@@ -36,17 +31,16 @@ class HomePage extends React.PureComponent<Props> {
                     variant="fullWidth"
                     className={classes["tab"]}
                 >
-                    <Tab label="热门事件" />
-                    <Tab label="重大事件" />
+                    <Tab label="虚假新闻" />
+                    <Tab label="微博谣言鉴定" />
                 </Tabs>
-                {value === 0 && <HotEvents />}
-                {value === 1 && <ImportantEvent />}
+                <div className={classes["false-container"]}>
+                    {value === 0 && <FalseNews />}
+                    {value === 1 && <FalseWeibo />}
+                </div>
             </div>
         );
     }
-    componentDidMount() {
-        this.props.beginDispatch();
-    }
 }
 
-export default withStyles(styles)(HomePage);
+export default withStyles(styles)(SelfKill);
