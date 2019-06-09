@@ -9,5 +9,8 @@ a {
 }
 
 body {
-    background: #f9f9f9 !important;
+    background-image: url("./Styles/bg.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-attachment: fixed;
 }

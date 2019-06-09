@@ -28,84 +28,9 @@ const initState: DataStore = {
         { name: "北京", value: 1989, description: "北京高考" },
         { name: "江苏", value: 1999, description: "江苏作文" }
     ],
-    top5Hot: [
-        {
-            rank: 1,
-            title: "洪志远学姐",
-            region: "湖北",
-            hot: 1.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        },
-        {
-            rank: 2,
-            title: "洪志远学姐",
-            region: "湖北",
-            hot: 2.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        },
-        {
-            rank: 3,
-            title: "洪志远学姐",
-            region: "湖北",
-            hot: 3.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        }
-    ],
-    top5Change: [
-        {
-            rank: 1,
-            title: "洪志远学姐",
-            region: "湖北",
-            hot: 1.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        },
-        {
-            rank: 2,
-            title: "洪志远学长",
-            region: "湖北",
-            hot: 2.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        },
-        {
-            rank: 3,
-            title: "洪志远学长",
-            region: "湖北",
-            hot: 3.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        }
-    ],
-    rank: [
-        {
-            rank: 1,
-            title: "洪志远学姐",
-            region: "湖北",
-            hot: 1.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        },
-        {
-            rank: 2,
-            title: "洪志远学长",
-            region: "湖北",
-            hot: 2.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        },
-        {
-            rank: 3,
-            title: "洪志远学长",
-            region: "湖北",
-            hot: 3.22,
-            area: "计算机科学",
-            href: "https://www.hzytql.top"
-        }
-    ],
+    top5Hot: [],
+    top5Change: [],
+    rank: [],
     statics: {
         basic: [
             {
@@ -134,24 +59,24 @@ const initState: DataStore = {
     },
     important: [
         {
-            title: "洪志远",
-            area: "计算机科学",
+            title: "10余省份高考放榜时间表出炉",
+            area: "高考",
             sensitivePercent: "12%",
             hotPercent: "25%",
             topPercent: "8%",
             intoTotal: 222,
-            hotHistoryData: [1, 7, 4, 2, 6, 5],
-            region: "湖北",
+            hotHistoryData: [1, 4, 9, 12, 11, 7],
+            region: "全国",
             date: "2019/06/09"
         },
         {
-            title: "洪志远2号",
-            area: "前端科学",
+            title: "中国移动/联通/电信首批5G城市名单",
+            area: "通信",
             sensitivePercent: "2%",
             hotPercent: "7%",
             topPercent: "44%",
             intoTotal: 211,
-            hotHistoryData: [1, 2, 6, 4, 2, 9],
+            hotHistoryData: [1, 9, 8, 12, 13, 15],
             region: "江苏",
             date: "2019/06/09"
         }

@@ -13,8 +13,8 @@ export interface ImportantStore {
 type Action = actions.IUpdateImportant;
 
 const initState: ImportantStore = {
-    title: "洪志远",
-    area: "计算机科学",
+    title: "10余省份高考放榜时间表出炉",
+    area: "高考",
     sensitivePercent: "12%",
     hotPercent: "25%",
     topPercent: "8%",
