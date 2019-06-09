@@ -9,6 +9,7 @@ import ChoroplethLayer from "sinomap/dist/layers/choropleth";
 
 interface Props extends WithStyles {
     cityInfo: Array<TYPINGS.ICityInfo>;
+    top5Hot: Array<TYPINGS.ITop5Hot>;
     changeCity: (cityName: string) => void;
 }
 
@@ -79,7 +80,7 @@ class ChinaMap extends React.PureComponent<Props> {
     };
 
     renderMap = () => {
-        const { cityInfo } = this.props;
+        const { cityInfo, top5Hot } = this.props;
         const that = this;
 
         const choropleth = new ChoroplethLayer({

@@ -5,8 +5,9 @@ import { StoreState } from "../../Reducers";
 
 import { changeCity } from "../../Actions/city";
 
-const mapStateToProps = ({ data: { cityInfo: cityInfoArr } }: StoreState) => ({
-    cityInfo: cityInfoArr
+const mapStateToProps = ({ data: { cityInfo: cityInfoArr, top5Hot } }: StoreState) => ({
+    cityInfo: cityInfoArr,
+    top5Hot
 });
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
