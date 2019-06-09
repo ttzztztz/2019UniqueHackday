@@ -53,7 +53,7 @@ class DetailView extends React.Component<Props> {
     renderAnalysis = () => {
         const { city } = this.props;
         const [obj] = this.props.statics.percent.filter(item => item.name === city);
-        const basicPercent = obj ? (obj.data as Array<number>) : [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+        const basicPercent = obj ? (obj.data as Array<number>) : [1, 1, 1, 1, 1, 1, 1, 1, 1];
 
         const parent = document.getElementById("data-analysis");
         parent.removeChild(document.getElementById("charts"));
@@ -64,21 +64,7 @@ class DetailView extends React.Component<Props> {
         const chartOptions = {
             type: "pie",
             data: {
-                labels: [
-                    "民生",
-                    "文娱",
-                    "评论",
-                    "法治",
-                    "政务",
-                    "经济",
-                    "身边事",
-                    "教育",
-                    "体育",
-                    "医疗",
-                    "交通",
-                    "商业",
-                    "突发"
-                ],
+                labels: ["民生", "文娱", "评论", "法治", "政务", "经济", "身边事", "教育", "体育", "医疗", "交通"],
                 datasets: [
                     {
                         data: basicPercent,
@@ -93,9 +79,7 @@ class DetailView extends React.Component<Props> {
                             "#DB79D9",
                             "#D2DB3C",
                             "#22B5C3",
-                            "#FF1F7B",
-                            "#44DB5E",
-                            "#538AFF"
+                            "#FF1F7B"
                         ]
                     }
                 ],

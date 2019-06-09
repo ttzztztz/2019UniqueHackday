@@ -39,8 +39,8 @@ class SideBar extends React.PureComponent<Props> {
                 </Tabs>
                 <div className={classes["news-item-container"]}>
                     {value === 0 && <DetailView city={city} />}
-                    {value === 1 && <TopView type="hot" city={city} />}
-                    {value === 2 && <TopView type="change" city={city} />}
+                    {value === 1 && <TopView type="hot" />}
+                    {value === 2 && <TopView type="change" />}
                 </div>
             </>
         );

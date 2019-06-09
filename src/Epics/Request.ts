@@ -11,6 +11,75 @@ import * as ACTIONCITYTYPE from "../Actions/city";
 
 const DOMAIN = "https://www.yjwbenji.top/";
 
+const changeStaticsPercent: Epic = action$ =>
+    action$.pipe(
+        ofType(ACTIONTYPE.CHANGE_PROVINCE_REFLECTION),
+        mergeMap((action: ACTIONTYPE.IChangeProvinceReflection) => {
+            return from(request(`${DOMAIN}typeprop`)).pipe(
+                mergeMap(res => {
+                    const arr: Array<any> = res.data;
+                    const data = arr.reduce((p, item, key) => {
+                        if (item.data) {
+                            p.push({
+                                name: action.data[key],
+                                data: Object.values(item.data)
+                            });
+                        }
+
+                        return p;
+                    }, []);
+
+                    return of({
+                        type: ACTIONTYPE.CHANGE_PERCENT,
+                        data: data
+                    });
+                })
+            );
+        })
+    );
+
+const changeStaticsAnalysis: Epic = action$ =>
+    action$.pipe(
+        ofType(ACTIONTYPE.CHANGE_PROVINCE_REFLECTION),
+        mergeMap((action: ACTIONTYPE.IChangeProvinceReflection) => {
+            return from(request(`${DOMAIN}rank`)).pipe(
+                mergeMap(res => {
+                    const arr: Array<any> = res.data;
+                    const totalStatics = {
+                        events: 0,
+                        up: 0,
+                        down: 0
+                    };
+                    const data = arr.reduce((p, item, key) => {
+                        if (item.data) {
+                            p.push({
+                                name: action.data[key],
+                                events: item.data.hotCount + item.data.hotDesc + item.data.hotAsc,
+                                up: item.data.hotCount,
+                                down: item.data.hotDesc
+                            });
+                            totalStatics.events += item.data.hotCount + item.data.hotDesc + item.data.hotAsc;
+                            totalStatics.up += item.data.hotCount;
+                            totalStatics.down += item.data.hotDesc;
+                        }
+
+                        return p;
+                    }, []);
+
+                    data.push({
+                        name: "全国",
+                        ...totalStatics
+                    });
+
+                    return of({
+                        type: ACTIONTYPE.CHANGE_BASIC_STATIC,
+                        data: data
+                    });
+                })
+            );
+        })
+    );
+
 const changeTop5Hot: Epic = action$ =>
     action$.pipe(
         ofType(TYPE.REQUEST_TOP5HOT),
@@ -23,21 +92,36 @@ const changeTop5Hot: Epic = action$ =>
                         }
                         return p;
                     }, []);
-                    const dataRaw: Array<TYPINGS.ITop5Hot> = (resArr as any[]).map(item => ({
+                    const data: Array<TYPINGS.ITop5Hot> = (resArr as any[]).map(item => ({
                         rank: item.rank,
                         title: item.incidentTitle,
                         region: item.province,
-                        hot: item.rank,
+                        hot: ((Math.random() * 10000) % 100).toFixed(2),
                         area: "",
                         href: item.originalUrl
                     }));
+                    // .sort(($1, $2) => Number.parseInt($1.hot as string) - Number.parseInt($2.hot as string));
 
-                    const data = dataRaw.length > 5 ? dataRaw.slice(0, 5) : dataRaw;
+                    const provinceReflection = (res.data as any[]).reduce((p, v, k) => {
+                        if (v.list) {
+                            return {
+                                ...p,
+                                [k]: v.list[0].province
+                            };
+                        }
+                        return p;
+                    }, {}) as { [k: string]: string };
 
-                    return of({
-                        type: ACTIONTYPE.CHANGE_TOP5_HOT,
-                        data: data
-                    } as ACTIONTYPE.IChangeTOP5Hot);
+                    return of(
+                        {
+                            type: ACTIONTYPE.CHANGE_TOP5_HOT,
+                            data: data
+                        } as ACTIONTYPE.IChangeTOP5Hot,
+                        {
+                            type: ACTIONTYPE.CHANGE_PROVINCE_REFLECTION,
+                            data: provinceReflection
+                        } as ACTIONTYPE.IChangeProvinceReflection
+                    );
                 })
             );
         })
@@ -56,16 +140,15 @@ const changeTop5Change: Epic = action$ =>
                         return p;
                     }, []);
 
-                    const dataRaw: Array<TYPINGS.ITop5Change> = (resArr as any[]).map(item => ({
+                    const data: Array<TYPINGS.ITop5Change> = (resArr as any[]).map(item => ({
                         rank: item.rank,
                         title: item.incidentTitle,
                         region: item.province,
-                        hot: item.rank,
+                        hot: ((Math.random() * 10000) % 100).toFixed(2),
                         area: "",
                         href: item.originalUrl
                     }));
-
-                    const data = dataRaw.length > 5 ? dataRaw.slice(0, 5) : dataRaw;
+                    // .sort(($1, $2) => Number.parseInt($1.hot) - Number.parseInt($2.hot));
 
                     return of({
                         type: ACTIONTYPE.CHANGE_TOP5_CHANGE,
@@ -129,4 +212,11 @@ const beginEpics: Epic = action$ =>
         )
     );
 
-export default [beginEpics, changeTop5Hot, changeTop5Change, cityInfoChange];
+export default [
+    beginEpics,
+    changeTop5Hot,
+    changeTop5Change,
+    cityInfoChange,
+    changeStaticsAnalysis,
+    changeStaticsPercent
+];

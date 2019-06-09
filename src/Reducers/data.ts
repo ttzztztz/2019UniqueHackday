@@ -8,6 +8,9 @@ export interface DataStore {
     rank: Array<TYPINGS.IRank>;
     statics: TYPINGS.IStatics;
     important: Array<TYPINGS.IImportant>;
+    provinceReflection: {
+        [k: string]: string;
+    };
 }
 
 type Action =
@@ -17,7 +20,8 @@ type Action =
     | actions.IChangeRank
     | actions.IChangeBasicStatic
     | actions.IChangePercent
-    | actions.IChangeImportant;
+    | actions.IChangeImportant
+    | actions.IChangeProvinceReflection;
 
 const initState: DataStore = {
     cityInfo: [
@@ -120,11 +124,11 @@ const initState: DataStore = {
         percent: [
             {
                 name: "江苏",
-                data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+                data: [1, 2, 3, 4, 5, 6, 7, 8, 9]
             },
             {
                 name: "河北",
-                data: [99, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+                data: [99, 2, 3, 4, 5, 6, 7, 8, 9]
             }
         ]
     },
@@ -151,7 +155,8 @@ const initState: DataStore = {
             region: "江苏",
             date: "2019/06/09"
         }
-    ]
+    ],
+    provinceReflection: {}
 };
 
 export const dataReducer = function(state = initState, action: Action): DataStore {
@@ -182,6 +187,8 @@ export const dataReducer = function(state = initState, action: Action): DataStor
             return { ...state, rank: action.data };
         case actions.CHANGE_IMPORTANT:
             return { ...state, important: [...action.data] };
+        case actions.CHANGE_PROVINCE_REFLECTION:
+            return { ...state, provinceReflection: { ...action.data } };
     }
     return state;
 };

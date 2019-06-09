@@ -90,3 +90,18 @@ export const changeImportant = function(data: Array<TYPINGS.IImportant>): IChang
         data: data
     };
 };
+
+export const CHANGE_PROVINCE_REFLECTION = "CHANGE_PROVINCE_REFLECTION";
+export type CHANGE_PROVINCE_REFLECTION = typeof CHANGE_PROVINCE_REFLECTION;
+export interface IChangeProvinceReflection {
+    type: CHANGE_PROVINCE_REFLECTION;
+    data: {
+        [k: string]: string;
+    };
+}
+export const changeProvinceReflection = function(data: { [k: string]: string }): IChangeProvinceReflection {
+    return {
+        type: CHANGE_PROVINCE_REFLECTION,
+        data: data
+    };
+};
